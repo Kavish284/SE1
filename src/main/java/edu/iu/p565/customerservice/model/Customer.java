@@ -1,9 +1,11 @@
 package edu.iu.p565.customerservice.model;
 
+import jakarta.persistence.Entity;
 import jakarta.validation.constraints.NotEmpty;
 
 import java.util.Objects;
 
+@Entity
 public class Customer {
     private int id;
     @NotEmpty(message = "Name cannot be empty")
@@ -39,10 +41,9 @@ public class Customer {
     public boolean equals(Object o) {
         if (o == this)
             return true;
-        if (!(o instanceof Customer)) {
+        if (!(o instanceof Customer customer)) {
             return false;
         }
-        Customer customer = (Customer) o;
         return id == customer.id && Objects.equals(name, customer.name) && Objects.equals(email, customer.email);
     }
 
